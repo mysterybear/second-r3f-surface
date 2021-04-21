@@ -12,8 +12,11 @@ const CropImage = () => {
   const [v, setV] = useState(0)
   const modV = () => void setV((p) => (p === 0 ? 0.2 : 0))
 
-  const { inset } = useSpring({
-    inset: [v, v, v, v],
+  const { x, y, z, w } = useSpring({
+    x: v,
+    y: v,
+    z: v,
+    w: v,
   })
 
   return (
@@ -21,7 +24,10 @@ const CropImage = () => {
       <planeBufferGeometry args={[8, 6]} />
       <AnimatedCropImageShaderMaterial
         uniforms-u_image-value={imageTexture}
-        uniforms-u_inset-value={inset}
+        uniforms-u_inset-value-x={x}
+        uniforms-u_inset-value-y={y}
+        uniforms-u_inset-value-z={z}
+        uniforms-u_inset-value-w={w}
       />
     </mesh>
   )
