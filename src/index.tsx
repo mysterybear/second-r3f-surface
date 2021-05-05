@@ -1,17 +1,22 @@
+import { OrbitControls } from "@react-three/drei"
+import { Canvas, extend } from "@react-three/fiber"
 import React from "react"
 import ReactDOM from "react-dom"
-import "./index.css"
 import App from "./components/App"
-import { Canvas, extend } from "@react-three/fiber"
-import { OrbitControls } from "@react-three/drei"
+import "./index.css"
 extend({ OrbitControls })
 
 ReactDOM.render(
   <React.StrictMode>
     <div className="container">
-      <Canvas>
+      <Canvas
+        camera={{
+          position: [-1, 2, 3],
+        }}
+      >
         <App />
         <OrbitControls />
+        <gridHelper />
       </Canvas>
     </div>
   </React.StrictMode>,
